@@ -62,13 +62,12 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const chatbotIdStorage = localStorage.getItem("selectedChatbotId");
     const fetchMessages = async () => {
-      if (!chatbotIdStorage) return;
+      if (!chatbotId) return;
 
       try {
         const chatbotData = await MessageService.listMessageChatBots(
-          chatbotIdStorage!
+          chatbotId!
         );
 
         const rawMessages = chatbotData || [];
@@ -85,7 +84,7 @@ export default function Home() {
     };
 
     fetchMessages();
-  }, [chatbotIdStorage, dispatch]);
+  }, [chatbotId, dispatch]);
 
   return (
     <main className="flex h-screen bg-neutral-900">
