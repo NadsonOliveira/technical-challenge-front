@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+````markdown
+# 📄 Front-End Chatbot PDF
 
-## Getting Started
+Este é o front-end do projeto onde o usuário pode **criar um chatbot**, **enviar PDFs** e **conversar com a IA** diretamente pela interface.
 
-First, run the development server:
+**ANTES DE TUDO, RODE O BACK END**
 
-```bash
+---
+
+## ▶️ Como Rodar o Projeto
+
+### 1. Instalar dependências
+
+```sh
+npm install
+```
+````
+
+````
+
+### 3. Rodar o projeto
+
+```sh
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+````
+
+Acesse no navegador:
+
+```
+http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💬 Como Usar o Sistema (Passo a Passo)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### ⭐ 1. Criar um novo chatbot
 
-## Learn More
+Na tela inicial:
 
-To learn more about Next.js, take a look at the following resources:
+1. Clique no botão **Criar Chatbot** (ou semelhante no seu layout).
+2. Preencha o nome do chatbot.
+3. Ao salvar, o chatbot será criado no backend.
+4. O sistema exibirá o **ID do chatbot**, que será usado no front.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> Esse ID é o identificador principal para salvar mensagens, PDFs e respostas da IA.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### ⭐ 2. Selecionar o chatbot e entrar no chat
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Ao abrir a interface de chat:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- O sistema pode pegar automaticamente o `chatbotId` do localStorage
+  **ou**
+- Você escolhe o chatbot manualmente em uma lista (dependendo do seu front).
+
+Depois disso, você será direcionado para a área de conversa.
+
+---
+
+### ⭐ 3. Enviar PDFs (opcional)
+
+No componente **ChatInput**, clique no botão de PDF:
+
+1. Escolha um PDF.
+2. Clique em **Enviar**.
+3. O PDF será enviado ao backend.
+4. A IA irá processar o documento e gerar mensagens automaticamente.
+
+As mensagens aparecerão na área de:
+
+```
+<ChatMessages />
+```
+
+---
+
+### ⭐ 4. Conversar com a IA
+
+Na parte inferior da tela existe o campo de texto:
+
+```
+Digite sua mensagem...
+```
+
+Como funciona:
+
+1. Escreva sua pergunta ou comando.
+2. clique no botão de enviar.
+3. O front:
+
+   - envia a mensagem ao backend
+   - exibe a resposta da IA assim que retornar
+
+Você pode perguntar sobre:
+
+- Informações do PDF
+- Resumo
+- Explicações
+- Conversa normal
+
+---
+
+### ⭐ 5. A IA responde em tempo real
+
+As mensagens aparecem em ordem:
+
+- **User** → alinhado à direita
+- **Assistant** → alinhado à esquerda
+
+Com ícones:
+
+- 💬 para mensagens normais
+- 📄 para mensagens baseadas em PDFs
+
+A interface atualiza automaticamente sempre que o backend retorna algo.
+
+---
+
+## ✔️ Pronto!
+
+O usuário agora pode criar chatbots, enviar documentos e conversar com a IA de forma contínua.
